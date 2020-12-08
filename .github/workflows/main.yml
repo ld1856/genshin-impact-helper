@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: 3.8
 
+      - name: Run sign5
+        run: |
+          pip install -r requirements.txt
+          echo "${{ secrets.COOKIE5 }}" | tr '#' "\n" | xargs -I {} sh -c 'echo "{}" | python3 ./genshin.py'
+          
       - name: Run sign1
         run: |
           pip install -r requirements.txt
